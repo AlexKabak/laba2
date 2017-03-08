@@ -1,0 +1,55 @@
+from random import shuffle
+
+class Card(object):
+
+    ranks = ['2 ', '3 ', '4 ', '5 ', '6 ', '7 ', '8 ', '9 ', '10 ', 'Joker ', 'Queen ', 'King ', 'Ace ']
+    suits = ['Spades', 'Clubs', 'Hearts', 'Diamonds']
+
+    def __init__(self, rank, suit):
+        self.rank = rank
+        self.suit = suit
+
+    def get_rank(self):
+        return self.rank
+
+    def __str__(self):
+        return "%s%s" % (self.rank, self.suit)
+
+class Deck(object):
+    def __init__(self):
+
+        self.cards = [Card(r, s) for r in Card.ranks for s in Card.suits]
+
+    def shuffle_cards(self):
+        return shuffle(self.cards)
+
+    def deal_card(self):
+        return self.cards.pop()
+
+    def print_cards(self):
+        for i in self.cards:
+           print(i)
+
+class Stoll:
+    def __init__(self):
+        self.stol = []
+
+    def add_card(self, card):
+        self.stol.append(card)
+
+    def print_stol(self):
+        for i in self.stol:
+            print(i)
+
+if __name__ == "__main__":
+    cart = Deck()
+    print('Card deck: ')
+    cart.print_cards()
+    print('\n\nShuffle the cards deck: ')
+    cart.shuffle_cards()
+    cart.print_cards()
+    print('\n\nStol:')
+    s = Stoll()
+    for i in range(28):
+        s.add_card(cart.deal_card())
+    print(s.print_stol())
